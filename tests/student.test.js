@@ -26,4 +26,4 @@ describe("Student API", () => {
     expect(res.statusCode).toBe(201);
     expect(res.body.status).toBe("created");
   });
-});
+}); 
