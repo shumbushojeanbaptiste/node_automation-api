@@ -31,4 +31,4 @@ jobs:
             npm ci
             pm2 restart students-api || pm2 start src/server.js --name students-api
             pm2 save
-            echo "✅ Deployment complete"
+            echo "Deployment complete"
