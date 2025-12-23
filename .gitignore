@@ -22,3 +22,7 @@ coverage/
 # IDE
 .vscode/
 .idea/
+
+# SSH keys (NEVER commit these)
+M00dle!!
+M00dle!!.pub
