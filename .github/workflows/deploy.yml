@@ -23,7 +23,7 @@ jobs:
           script: |
             set -e
             echo "🚀 Starting deploy..."
-            cd /home/dev-jean/htdocs/students-api
+            cd /home/dev-jean/htdocs/student-api
             git pull origin main
             npm ci
             pm2 restart students-api || pm2 start src/server.js --name students-api
