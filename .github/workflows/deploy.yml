@@ -24,6 +24,9 @@ jobs:
             set -e
             echo "🚀 Starting deploy..."
             cd /home/dev-jean/htdocs/students-api
+            git init
+            git clone https://github.com/shumbushojeanbaptiste/node_automation-api.git
+            cd node_automation-api
             git pull origin main
             npm ci
             pm2 restart students-api || pm2 start src/server.js --name students-api
