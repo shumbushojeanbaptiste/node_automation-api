@@ -1,25 +1,31 @@
-name: Deploy to VPS
+name: Deploy Node.js App to VPS
 
 on:
   push:
     branches:
-      - main
+      - main  # deploy only from main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
           script: |
             set -e
-            cd /var/www/node-api-automation-students
+            echo "🚀 Starting deploy..."
+            cd /home/dev-jean/htdocs/students-api
             git pull origin main
             npm ci
             pm2 restart students-api || pm2 start src/server.js --name students-api
             pm2 save
+            echo "✅ Deployment complete"
